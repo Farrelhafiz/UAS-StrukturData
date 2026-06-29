@@ -6,7 +6,7 @@ graph = {
     "Bandung": [ ("Cirebon", 125), ("Semarang", 450)],
     "Surabaya": [("Semarang", 330), ("Malang", 90)],
     "Semarang": [ ("Cirebon", 300), ("Yogyakarta", 120)],
-    "Yogyakarta": [("Bandung", 270), ("Malang", 150)],
+    "Yogyakarta": [("Bandung", 270), ("Malang", 155)],
     "Malang": [("Bogor", 90), ("Jakarta", 350)],
     "Bogor": [("Bandung", 100)],
     "Cirebon": [("Jakarta", 180), ("Yogyakarta", 120)],
