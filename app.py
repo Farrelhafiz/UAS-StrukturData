@@ -107,7 +107,8 @@ def main():
         with peta_placeholder:
             folium_static(peta_default, width=700, height=500)
         
-        hasil_placeholder.info("Pilih kota asal, tujuan, dan metode di sidebar, lalu klik 'Hitung Jalur'")
+        hasil_placeholder.info("""Pilih kota asal, tujuan, dan 
+                            metode di sidebar,lalu klik 'Hitung Jalur'""")
 
 if __name__ == "__main__":
     main()
