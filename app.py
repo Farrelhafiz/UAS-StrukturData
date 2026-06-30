@@ -1,7 +1,5 @@
 import streamlit as st
 import folium
-from streamlit_folium import folium_static
-from collections import deque
 import heapq
 
 from algoritma import graph, cari_rute_dijkstra, cari_semua_rute
