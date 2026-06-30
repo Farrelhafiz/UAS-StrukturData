@@ -13,6 +13,8 @@ koordinat_kota = {
     "Bogor": [-6.5971, 106.8060],
     "Cirebon": [-6.7320, 108.5523],
 }
+
+
 def ambil_koordinat_jalan(lat1, lon1, lat2, lon2):
     url = (
         f"https://router.project-osrm.org/route/v1/driving/"
@@ -34,6 +36,7 @@ def ambil_koordinat_jalan(lat1, lon1, lat2, lon2):
 
     except Exception:
         pass
+
 
     # fallback jika API gagal
     return [
@@ -57,8 +60,10 @@ def gambar_peta(rute_pilihan, semua_rute_mode=False):
     # Warna yang dipakai kalau nampilin banyak rute alternatif
     warna_list = ["blue", "purple", "orange", "green", "magenta", "cadetblue"]
 
+
+ # Loop semua rute alternatif yang udh ditemuin
+
     if semua_rute_mode:
-        # kalo ini buat Loop semua rute alternatif yang udh ditemuin
         for idx, (rute, jarak) in enumerate(rute_pilihan):
             warna = warna_list[idx % len(warna_list)]
             for i in range(len(rute)-1):
@@ -84,15 +89,18 @@ def gambar_peta(rute_pilihan, semua_rute_mode=False):
                     tooltip=f"Alternatif {idx+1} ({jarak} km)"
                 ).add_to(peta)
                 
-            # marker khusus tiap kota di dalam rute(biar ga bingung lu pada bedain warnanya)
+            # marker tiap kota 
             for kota in rute:
                 folium.Marker(
                     location=koordinat_kota[kota],
                     popup=f"{kota} (Rute {idx+1})",
                     icon=folium.Icon(color=warna, icon="info-sign")
                 ).add_to(peta)
-    else:
-        # Mode Rute Tunggal (Dijkstra)
+
+
+# Mode Rute Tunggal (Dijkstra)
+
+    else:        
         for i in range(len(rute_pilihan)-1):
 
             kota_awal = rute_pilihan[i]

@@ -1,6 +1,7 @@
 import streamlit as st
 import folium
 import heapq
+from streamlit_folium import folium_static
 
 from algoritma import graph, cari_rute_dijkstra, cari_semua_rute
 from peta import koordinat_kota, gambar_peta
