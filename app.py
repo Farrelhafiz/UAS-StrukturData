@@ -1,12 +1,12 @@
 import streamlit as st
 import folium
-import heapq
 from streamlit_folium import folium_static
+import heapq
 
 from algoritma import graph, cari_rute_dijkstra, cari_semua_rute
 from peta import koordinat_kota, gambar_peta
 
-# PAGE TITLE
+# ini kaya head kalo di html buat page title
 st.set_page_config(page_title="Aplikasi Travel Bus dengan Rute Terpendek & Alternatif", layout="wide")
 
 # Judul
@@ -58,8 +58,8 @@ def main():
                     ### Rute Terpendek Ditemukan!
                     * **Jalur Terpilih:** {' -> '.join(rute)}
                     * **Total Jarak:** **{total_jarak} KM**
-                    * **Jumlah Transit:** {len(rute) -2} kali
-                    * **Jumlah Perpindahan Kota:** {len(rute) -1} kali
+                    * **Jumlah Transit:** {len(rute) - 2} kali
+                    * **Jumlah perpindahan kota:** {len(rute)-1} kali
                 
                     """
                     hasil_placeholder.markdown(hasil_text)
@@ -86,9 +86,9 @@ def main():
                         hasil_text += f"**{opsi_label}**\n"
                         hasil_text += f"* Jalur: {'  -> '.join(rute)}\n"
                         hasil_text += f"* Total Jarak: **{jarak} KM**\n"
-                        hasil_text += f"* Jumlah Transit: {len(rute) -2} kali\n"
-                        hasil_text += f"* Jumlah Perpindahan Kota: {len(rute) -1} kali\n\n"
-                    
+                        hasil_text += f"* Jumlah Transit: {len(rute)-2} kali\n"
+                        hasil_text += f"* Jumlah Perpindahan Kota: {len(rute)-1} kali\n\n"
+
                     
                     hasil_placeholder.markdown(hasil_text)
                     
@@ -97,17 +97,16 @@ def main():
                         folium_static(peta, width=700, height=500)
                 else:
                     hasil_placeholder.error(f"Tidak ada jalur bus sama sekali dari {start} ke {tujuan}")
-
-     #Peta Default               
-    else:        
+                    
+    else:
+        #Peta Default
         peta_default = folium.Map(location=[-7.0, 110.0], zoom_start=7)
         for kota, (lat, lon) in koordinat_kota.items():
             folium.Marker([lat, lon], popup=kota).add_to(peta_default)
         with peta_placeholder:
             folium_static(peta_default, width=700, height=500)
         
-        hasil_placeholder.info("""Pilih kota asal, tujuan, dan 
-                            metode di sidebar,lalu klik 'Hitung Jalur'""")
+        hasil_placeholder.info("Pilih kota asal, tujuan, dan metode di sidebar, lalu klik 'Hitung Jalur'")
 
 if __name__ == "__main__":
     main()
